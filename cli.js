@@ -71,5 +71,5 @@ if (day == 0) {
     } else {
         console.log("Wear your galoshes")
     }
-    console.log("in " + day + "days.")
+    console.log("in " + day + " days.")
 }
