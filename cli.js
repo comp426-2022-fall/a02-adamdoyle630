@@ -48,28 +48,20 @@ if (args.j) {
     console.log(data);
 }
 
-const day = args.d
+const day = args.d || 0
+
+// Determine if there is precipitation
+if (data.daily.precipitation_hours[day] == 0) {
+    console.log("No need to wear galoshes")
+} else {
+    console.log("Wear your galoshes")
+}
 
 // Print precipitation for selected day
 if (day == 0) {
-    if (data.daily.precipitation_hours[day] == 0) {
-        console.log("No need to wear galoshes")
-    } else {
-        console.log("Wear your galoshes")
-    }
     console.log("today.")
 } else if (day == 1) {
-    if (data.daily.precipitation_hours[day] == 0) {
-        console.log("No need to wear galoshes")
-    } else {
-        console.log("Wear your galoshes")
-    }
     console.log("tomorrow.")
 } else {
-    if (data.daily.precipitation_hours[day] == 0) {
-        console.log("No need to wear galoshes")
-    } else {
-        console.log("Wear your galoshes")
-    }
     console.log("in " + day + " days.")
 }
