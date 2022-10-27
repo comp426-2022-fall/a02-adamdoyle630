@@ -18,28 +18,29 @@ if (args.h) {
     process.exit(0); 
 }
 
-// Get variables
-let tz = moment.tz.guess()
+// Get timezone
+const tz = args.z || moment.tz.guess()
 
-// Change tz to z arg if present
-if (args.z != null) {
-    tz = args.z;
-}
-
-let lat = 35
-let long = -79
-
+// Get latitude
+let lat = 0;
 if (args.n) {
     lat = args.n
-}
-if (args.s) {
+} else if (args.s) {
     lat = -args.s
+} else {
+    console.log("Latitude must be in range");
+    process.exit(0);
 }
+
+// Get longitude
+let long = 0;
 if (args.e) {
     long = args.e
-}
-if (args.w) {
+} else if (args.w) {
     long = -args.w
+} else {
+    console.log("Longitude must be in range");
+    process.exit(0);
 }
 
 // Make call to API
@@ -49,12 +50,13 @@ const response = await fetch(url);
 // Get data from request
 const data = await response.json();
 
-// Print data
+// Print data and exit
 if (args.j) {
     console.log(data);
+    process.exit(0);
 }
 
-// Day is tomorrow be default
+// Day is tomorrow by default
 let day = 1
 
 // Change day to d arg if present
