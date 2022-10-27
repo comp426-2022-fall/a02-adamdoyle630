@@ -48,7 +48,13 @@ if (args.j) {
     console.log(data);
 }
 
-const day = args.d || 0
+// Day is tomorrow be default
+var day = 1;
+
+// Change day to d arg if present
+if (args.d != null) {
+    day = args.d;
+}
 
 // Determine if there is precipitation
 if (data.daily.precipitation_hours[day] == 0) {
