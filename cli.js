@@ -19,7 +19,13 @@ if (args.h) {
 }
 
 // Get variables
-const tz = moment.tz.guess()
+let tz = moment.tz.guess()
+
+// Change tz to z arg if present
+if (args.z != null) {
+    tz = args.z;
+}
+
 let lat = 35
 let long = -79
 
@@ -49,7 +55,7 @@ if (args.j) {
 }
 
 // Day is tomorrow be default
-var day = 1;
+let day = 1
 
 // Change day to d arg if present
 if (args.d != null) {
